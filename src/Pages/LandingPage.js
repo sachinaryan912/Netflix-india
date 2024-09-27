@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import RankCard from '../Components/RankCard';
 import DB from '../Database/LocalDB.json';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
+import { useTranslation } from 'react-i18next'; // Import useTranslation hook
 import "react-horizontal-scrolling-menu/dist/styles.css";
 import Footer from '../Components/Footer';
 
 const LandingPage = () => {
+  const { t, i18n } = useTranslation(); 
   const navigate = useNavigate();
   const landing_page_movie_ranks = DB.landing_page_movie_ranks;
 
@@ -28,6 +30,10 @@ const LandingPage = () => {
     navigate('/signin');
   };
 
+  const handleLanguageChange = (event) => {
+    i18n.changeLanguage(event.target.value); 
+  };
+
   return (
     <div className="">
         <div className="banner"></div>
@@ -37,25 +43,23 @@ const LandingPage = () => {
                 <img src='../../assets/images/logo.png' className='logo'></img>
 
                 <div className="">
-                    
-                    <select className="lang-drop">
-                        <option><i className="fas fa-globe"></i>English</option>
-                        <option><i className="fas fa-globe"></i>Hindi</option>
+                    <select className="lang-drop" onChange={handleLanguageChange}>
+                        <option value="en"><i className="fas fa-globe"></i> English</option>
+                        <option value="hi"><i className="fas fa-globe"></i> हिंदी</option>
                     </select>
 
-                    <button className="signIn-btn" onClick={handleSignInClick}>Sign In</button>
+                    <button className="signIn-btn" onClick={handleSignInClick}>{t('signIn')}</button>
                 </div>
-
             </div>
             <div className="center-data">
-            <h1 className="">Unlimited movies, TV shows and more</h1>
-            <p className="p1">Starts at ₹149. Cancel at any time.</p>
-            <p className="p2">Ready to watch? Enter your email to create or restart your membership.</p>
-            <div className="">
-                <input type="email" placeholder="Email address" value="" className="email-box" />
-                <button className="get-started-btn">Get Started <i class="fa-solid fa-chevron-right"></i></button>
+                <h1 className="">{t('title')}</h1>
+                <p className="p1">{t('description')}</p>
+                <p className="p2">{t('prompt')}</p>
+                <div className="">
+                    <input type="email" placeholder={t('emailPlaceholder')} className="email-box" />
+                    <button className="get-started-btn">{t('getStarted')} <i className="fa-solid fa-chevron-right"></i></button>
+                </div>
             </div>
-        </div>
         </div>
 
         <div className='section2'>
@@ -64,32 +68,26 @@ const LandingPage = () => {
           </div>
 
           <div className='section2-data'>
-          <h2>Trending Now</h2>
-          <div style={{alignContent: 'center', justifyContent: 'center',alignItems: 'center'}}>
-          <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-      {landing_page_movie_ranks.map((item, index) => (
-        <RankCard
-          key={index}
-          itemId={item.rank}
-          imageSrc={item.imageUrl}
-          title={item.title}
-          rank={item.rank}
-          onClick={handleClick(item.rank)}
-          selected={isItemSelected(item.rank)}
-          
-        />
-      ))}
-    </ScrollMenu>
-          
+            <h2>{t('trendingNow')}</h2>
+            <div style={{alignContent: 'center', justifyContent: 'center', alignItems: 'center'}}>
+              <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+                {landing_page_movie_ranks.map((item, index) => (
+                  <RankCard
+                    key={index}
+                    itemId={item.rank}
+                    imageSrc={item.imageUrl}
+                    title={item.title}
+                    rank={item.rank}
+                    onClick={handleClick(item.rank)}
+                    selected={isItemSelected(item.rank)}
+                  />
+                ))}
+              </ScrollMenu>
+            </div>
           </div>
-          </div>
-
-          
         </div>
 
-        
         <Footer />
-        
     </div>
   );
 };
@@ -99,7 +97,7 @@ const LeftArrow = () => {
 
   return (
     <button onClick={() => visibility.scrollPrev()} className="left-arrow">
-      <i class="fa-solid fa-chevron-left"></i>
+      <i className="fa-solid fa-chevron-left"></i>
     </button>
   );
 };
@@ -109,7 +107,7 @@ const RightArrow = () => {
 
   return (
     <button onClick={() => visibility.scrollNext()} className="right-arrow">
-      <i class="fa-solid fa-chevron-right"></i>
+      <i className="fa-solid fa-chevron-right"></i>
     </button>
   );
 };
