@@ -1,0 +1,121 @@
+.footer {
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid #333;
+    text-align: left;
+    color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.footer a {
+    color: #757575;
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer .contact-info {
+    margin-bottom: 20px;
+}
+
+.footer .footer-links {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Make the columns wrap on smaller screens */
+    margin-bottom: 20px;
+}
+
+.footer .footer-column {
+    flex: 1; /* Each column will take equal space */
+    min-width: 150px; /* Minimum width for columns */
+    margin: 0 10px;
+}
+
+.email-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.email-input-field {
+    border: 1px solid gainsboro;
+    background-color: rgba(94, 96, 106, 0.512);
+    color: gainsboro;
+    margin-right: 10px;
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+.email-input button {
+    padding: 10px 20px;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.email-input button:hover {
+    background-color: #f40612;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.language-selector {
+    margin-top: 20px;
+}
+
+.language-selector button {
+    background-color: black;
+    color: white;
+    border: 1px solid #333;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.language-selector button:hover {
+    border-color: white;
+}
+
+.region {
+    margin-top: 20px;
+    font-size: 0.7rem;
+    color: gainsboro;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .footer-links {
+        flex-direction: column; /* Stack columns on small screens */
+        align-items: center; /* Center align columns */
+    }
+
+    .footer-column {
+        margin: 10px 0; /* Margin for spacing between columns */
+    }
+
+    .email-input {
+        flex-direction: column; /* Stack email input elements */
+    }
+
+    .email-input-field {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 10px; /* Spacing between input and button */
+    }
+}
