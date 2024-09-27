@@ -194,3 +194,8 @@ code {
 .left-arrow:hover, .right-arrow:hover {
   background-color: #333; /* Changes color on hover */
 }
+
+.card-parent{
+  border: 1px solid red;
+  margin: 40px;
+}

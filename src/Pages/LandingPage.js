@@ -6,6 +6,7 @@ import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { useTranslation } from 'react-i18next'; // Import useTranslation hook
 import "react-horizontal-scrolling-menu/dist/styles.css";
 import Footer from '../Components/Footer';
+import { Helmet } from 'react-helmet';
 
 const LandingPage = () => {
   const { t, i18n } = useTranslation(); 
@@ -36,6 +37,9 @@ const LandingPage = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>Netflix India – Watch TV Shows Online, Watch Movies Online</title>
+      </Helmet>
         <div className="banner"></div>
         <div className="overlay"></div>
         <div className='absolute-page'>
@@ -69,7 +73,7 @@ const LandingPage = () => {
 
           <div className='section2-data'>
             <h2>{t('trendingNow')}</h2>
-            <div style={{alignContent: 'center', justifyContent: 'center', alignItems: 'center'}}>
+            <div >
               <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
                 {landing_page_movie_ranks.map((item, index) => (
                   <RankCard
