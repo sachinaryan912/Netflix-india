@@ -9,6 +9,8 @@ import ChoosePlanFinal from './Pages/RegistrationBulks/ChoosePlanFinal';
 import ChoosePlanPage1 from './Pages/RegistrationBulks/ChoosePlanPage1';
 import VerifyEmailPage from './Pages/RegistrationBulks/VerifyEmailPage';
 import RegistrationPage from './Pages/RegistrationPage';
+import Home from './Pages/HomePage';
+import ManageProfiles from './Pages/ManageProfiles';
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<SignInPage />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/manageProfile" element={<ManageProfiles />} />
         <Route path="/startregistration" element={<FinishSettingUp />} />
         <Route path="/register" element={<CreatePassword />} />
         <Route path="/register/verifyemail" element={<VerifyEmailPage />} />

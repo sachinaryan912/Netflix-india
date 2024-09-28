@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './LoginCard.css'; // Import CSS styles
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../Database/firebaseConfig'; // Import your Firebase configuration
+import { signInWithEmailAndPassword } from 'firebase/auth'; // Import the sign-in function
 
 const LoginCard = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Load email from local storage if available
+        const storedEmail = localStorage.getItem('userEmail');
+        if (storedEmail) {
+            setEmail(storedEmail);
+            setRememberMe(true); // Set rememberMe to true if email is found
+        }
+    }, []);
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -18,10 +31,25 @@ const LoginCard = () => {
         setRememberMe(e.target.checked);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle sign-in logic here
-        alert(`Email: ${email}, Password: ${password}, Remember Me: ${rememberMe}`);
+        
+        try {
+            // Sign in with Firebase
+            await signInWithEmailAndPassword(auth, email, password);
+            console.log(`Signed in as: ${email}`);
+
+            if (rememberMe) {
+                localStorage.setItem('userEmail', email);
+            } else {
+                localStorage.removeItem('userEmail'); 
+            }
+            navigate('/manageProfile'); 
+
+        } catch (error) {
+            console.error('Error signing in:', error);
+            alert(`Error: ${error.message}`); // Show error message
+        }
     };
 
     return (
@@ -34,12 +62,14 @@ const LoginCard = () => {
                         placeholder="Email or mobile number"
                         value={email}
                         onChange={handleEmailChange}
+                        required
                     />
                     <input
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange={handlePasswordChange}
+                        required
                     />
                     <button type="submit">Sign In</button>
                 </form>

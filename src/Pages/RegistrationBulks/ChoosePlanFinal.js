@@ -5,18 +5,34 @@ import PlanCard from '../../Components/PlanCard';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
+import { db } from '../../Database/firebaseConfig'; // Import your Firebase database configuration
+import { ref, update } from 'firebase/database'; // Import the update function
 
 const ChoosePlanFinal = () => {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const updateActivePlan = async (userId) => {
+    const userRef = ref(db, `users/${userId}`);
+    try {
+      await update(userRef, { activeplan: 'Premium' }); // Update active plan to Premium
+      console.log('Active plan updated to Premium for user:', userId);
+    } catch (error) {
+      console.error('Error updating active plan:', error);
+    }
+  };
+
+  const handleClick = async () => {
+    const userId = localStorage.getItem('userId');
     setOpen(true);
+    await updateActivePlan(userId); // Call the function to update the plan
+
     setTimeout(() => {
       console.log('hello');
-      navigate('/signin');
+      navigate('/signin'); // Redirect to sign-in page after 2 seconds
     }, 2000);
   };
+
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {

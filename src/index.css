@@ -221,3 +221,39 @@ code {
 .card-parent{
   margin: 40px;
 }
+
+
+/* manageprofile */
+.profile-container{
+  color: gainsboro;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 20%;
+
+}
+
+.profile_card{
+  text-align: center;
+}
+.profile_card img{
+  width: 120px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.profile_card img:hover{
+  border: 1px solid green;
+}
+
+.mBtn{
+  border: 1px solid gainsboro;
+  background: transparent;
+  color: gainsboro;
+  padding: 15px;
+  margin-top: 40px;
+  cursor: pointer;
+}
+

@@ -47,6 +47,7 @@ const LandingPage = () => {
             navigate(`/signin`);
         } else {
             console.log(`Email is not registered: ${email}`);
+            localStorage.setItem('userEmail', email);
             navigate(`/startregistration`);
         }
     } catch (error) {
