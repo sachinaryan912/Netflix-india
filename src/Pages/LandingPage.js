@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import RankCard from '../Components/RankCard';
 import DB from '../Database/LocalDB.json';
@@ -7,13 +7,56 @@ import { useTranslation } from 'react-i18next'; // Import useTranslation hook
 import "react-horizontal-scrolling-menu/dist/styles.css";
 import Footer from '../Components/Footer';
 import { Helmet } from 'react-helmet';
+import {TextField} from '@mui/material';
+import {Button} from '@mui/material';
+import { auth } from '../Database/firebaseConfig'; // Adjust the path as necessary
+import { fetchSignInMethodsForEmail } from 'firebase/auth';
 
 const LandingPage = () => {
+
   const { t, i18n } = useTranslation(); 
   const navigate = useNavigate();
   const landing_page_movie_ranks = DB.landing_page_movie_ranks;
 
   const [selected, setSelected] = React.useState([]);
+
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+    setError(''); 
+  };
+
+  const handleGetStarted = async () => {
+    console.log("hey");
+    if (!email) {
+        setError('Email is required.');
+        return;
+    }
+
+    console.log(`Checking email: ${email}`);
+
+    try {
+        console.log('Fetching sign-in methods...');
+        const signInMethods = await fetchSignInMethodsForEmail(auth, email); 
+        console.log(`Sign-in methods for ${email}:`, signInMethods);
+
+        if (signInMethods.length > 0) {
+            console.log(`Email is already registered: ${email}`);
+            navigate(`/signin`);
+        } else {
+            console.log(`Email is not registered: ${email}`);
+            navigate(`/startregistration`);
+        }
+    } catch (error) {
+        console.error('Error fetching sign-in methods:', error);
+        setError('An error occurred. Please try again later.');
+    }
+};
+
+  
+  
 
   const isItemSelected = (id) => !!selected.find((el) => el === id);
 
@@ -47,10 +90,13 @@ const LandingPage = () => {
                 <img src='../../assets/images/logo.png' className='logo'></img>
 
                 <div className="">
+                
+                
                     <select className="lang-drop" onChange={handleLanguageChange}>
                         <option value="en"><i className="fas fa-globe"></i> English</option>
                         <option value="hi"><i className="fas fa-globe"></i> हिंदी</option>
                     </select>
+                    
 
                     <button className="signIn-btn" onClick={handleSignInClick}>{t('signIn')}</button>
                 </div>
@@ -60,8 +106,46 @@ const LandingPage = () => {
                 <p className="p1">{t('description')}</p>
                 <p className="p2">{t('prompt')}</p>
                 <div className="">
-                    <input type="email" placeholder={t('emailPlaceholder')} className="email-box" />
-                    <button className="get-started-btn">{t('getStarted')} <i className="fa-solid fa-chevron-right"></i></button>
+                <TextField
+        id="filled-basic"
+        label="Email Address"
+        variant="filled"
+        value={email}
+        onChange={handleEmailChange}
+        InputProps={{
+          disableUnderline: true,
+        }}
+        sx={{
+          width: '30vw',
+          marginRight: '10px',
+          height: '55px',
+          marginBottom: '20px',
+          backgroundColor: 'rgba(94, 96, 106, 0.301)',
+          color: 'white',
+          '& .MuiInputBase-input': {
+            color: 'white',
+          },
+          '& .MuiFilledInput-root': {
+            border: '1px solid gray',
+            borderRadius: '4px',
+            height: '100%',
+          },
+          '& .MuiInputLabel-root': {
+            color: 'gray',
+          },
+          '& .MuiFilledInput-root:hover': {
+            backgroundColor: 'rgba(94, 96, 106, 0.301)',
+          },
+          '& .MuiFilledInput-root.Mui-focused': {
+            borderColor: 'green',
+          },
+        }}
+        error={!!error}
+        helperText={error} // Show error message if present
+      />
+      <button className="get-started-btn" onClick={handleGetStarted}>Get Started <i className="fa-solid fa-chevron-right"></i></button>
+                    {/* <input type="email" placeholder={t('emailPlaceholder')} className="email-box" /> */}
+                    
                 </div>
             </div>
         </div>

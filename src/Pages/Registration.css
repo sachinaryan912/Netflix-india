@@ -1,0 +1,202 @@
+/* src/Registration.css */
+.reg {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    max-width: 450px;
+    height: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.header img {
+    height: 45px;
+}
+
+.header a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.content {
+    margin-top: 50px;
+}
+
+
+
+
+.content h1 {
+    font-size: 24px;
+}
+
+.content h2 {
+    font-size: 20px;
+}
+
+.content p {
+    font-size: 16px;
+}
+
+.content .email {
+    font-weight: bold;
+}
+
+.content input {
+    width: 95%;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.content a {
+    color: #0071eb;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+.content button {
+    height: 55px;
+    width: 100%;
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.content button:hover {
+    background-color: #d40813;
+}
+
+/* finish setting up*/
+.content1 {
+    width: 80%;
+    margin-top: 50px;
+    text-align: center;
+    
+}
+.content1 h1 {
+    font-size: 3vw;
+}
+
+.content1 img{
+    width: 70%;
+}
+
+.content1 h2 {
+    font-size: 20px;
+}
+
+.content1 p {
+    font-size: 16px;
+}
+
+.content1 .email {
+    font-weight: bold;
+}
+
+.content1 input {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+.content1 i{
+    font-size: 4vw;
+    color: #e50914;
+}
+
+
+.content1 a {
+    color: #0071eb;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.content1 a:hover {
+    text-decoration: underline;
+}
+
+.content1 button {
+    height: 50px;
+    width: 80%;
+    padding: 10px;
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.content1 button:hover {
+    background-color: #d40813;
+}
+
+.plans-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .plans-header {
+    margin-bottom: 20px;
+  }
+  
+  .plans-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .next-btn {
+    width: 30vw;
+    height: 50px;
+    background-color: #e50914;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    .plans-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

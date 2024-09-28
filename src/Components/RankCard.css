@@ -2,8 +2,8 @@
     position: relative;
     width: 190px;
     height: 260px;
-    margin-right: 30px;
-    margin-left: 20px;
+    margin-right: 30px !important;
+    margin-left: 15px !important;
     cursor: pointer;
     
     transition: transform 0.3s ease;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Footer.css'; // Import the CSS file for styles
+import {TextField} from '@mui/material';
 
 const Footer = () => {
     const [email, setEmail] = useState('');
@@ -38,10 +39,11 @@ const Footer = () => {
                     onChange={handleEmailChange}
                     className="email-input-field"
                 />
-                <button type="submit">Get Started <i class="fa-solid fa-chevron-right"></i></button>
+                <button type="submit">Get Started <i className="fa-solid fa-chevron-right"></i></button>
                 {error && <div className="error-message"><i className="fas fa-exclamation-circle"></i> {error}</div>}
             </form>
             </div>
+            
             <div className="contact-info">
                 Questions? Call <a href="tel:000-800-919-1694">000-800-919-1694</a>
             </div>

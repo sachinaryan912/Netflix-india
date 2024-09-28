@@ -1,0 +1,11 @@
+firebase data:
+unique_uid: {
+    profiles: [
+    profile1
+    profile2
+    profile3
+],
+activeplan: xxx,
+userId:
+accountCreatedOn:
+}
