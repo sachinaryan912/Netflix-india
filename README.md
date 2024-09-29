@@ -27,5 +27,5 @@ A React JS and Firebase-based Netflix clone featuring user authentication, watch
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/netflix-clone.git
+   [git clone https://github.com/yourusername/netflix-clone.git](https://github.com/sachinaryan912/Netflix-india.git)
 
