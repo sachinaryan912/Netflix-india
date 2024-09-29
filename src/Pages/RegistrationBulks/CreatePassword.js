@@ -25,7 +25,20 @@ const CreatePassword = () => {
       const userId = user.uid;
       const accountCreatedOn = new Date().toISOString();
       await set(ref(db, `users/${userId}`), {
-        profiles: ['profile1', 'profile2', 'profile3'],
+        profiles: [
+          {
+              name: 'profile1',
+              image: '../../assets/logos/profile1.png'
+          },
+          {
+              name: 'profile2',
+              image: '../../assets/logos/profile2.png'
+          },
+          {
+              name: 'profile3',
+              image: '../../assets/logos/profile3.png'
+          }
+      ],
         activeplan: '', 
         userId: userId,
         userEmail: storedEmail,

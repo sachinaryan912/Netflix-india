@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import RankCard from '../Components/RankCard';
 import DB from '../Database/LocalDB.json';
@@ -13,6 +14,20 @@ import { auth } from '../Database/firebaseConfig'; // Adjust the path as necessa
 import { fetchSignInMethodsForEmail } from 'firebase/auth';
 
 const LandingPage = () => {
+
+  const [movies, setMovies] = useState([]);
+
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const response = await axios.get(
+        'https://api.themoviedb.org/3/movie/top_rated',
+        { params: { api_key: '1d12479ef172d0b31150a9fc658578fa', language: 'en-US', page: 1 } }
+      );
+      setMovies(response.data.results.slice(0, 10));  // Get top 10 movies
+    };
+    fetchMovies();
+  }, []);
 
   const { t, i18n } = useTranslation(); 
   const navigate = useNavigate();
@@ -160,13 +175,13 @@ const LandingPage = () => {
             <h2>{t('trendingNow')}</h2>
             <div >
               <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-                {landing_page_movie_ranks.map((item, index) => (
+                {movies.map((item, index) => (
                   <RankCard
                     key={index}
-                    itemId={item.rank}
-                    imageSrc={item.imageUrl}
+                    itemId={index + 1}
+                    imageSrc={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                     title={item.title}
-                    rank={item.rank}
+                    rank={index + 1}
                     onClick={handleClick(item.rank)}
                     selected={isItemSelected(item.rank)}
                   />

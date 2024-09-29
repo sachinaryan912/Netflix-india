@@ -230,8 +230,17 @@ code {
   justify-content: center;
   align-items: center;
   gap: 50px;
-  margin-top: 20%;
+  width: fit-content;
 
+}
+
+.prf-parent{
+  margin-left: 30%;
+  margin-top: 15%;
+  
+  width: fit-content;
+  text-align: center;
+  
 }
 
 .profile_card{
@@ -239,13 +248,13 @@ code {
 }
 .profile_card img{
   width: 120px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 8px;
   cursor: pointer;
 }
 
 .profile_card img:hover{
-  border: 1px solid green;
+  border: 2px solid white;
 }
 
 .mBtn{
@@ -255,5 +264,176 @@ code {
   padding: 15px;
   margin-top: 40px;
   cursor: pointer;
+}
+
+@font-face {
+  font-family: 'title-font'; /* Choose a name for your font */
+  src: url('./font/BlackJunkiest-VG3V0.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* homepage */
+.overlay1 {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.849),    /* Top: Black */
+    rgba(0, 0, 0, 0.089),    /* Middle: Transparent */
+    rgb(0, 0, 0)   /* Bottom: Black */
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+.home-container {
+  overflow-y: scroll; /* Enable vertical scroll */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; 
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: relative; /* Set relative positioning for the overlay */
+}
+
+.top-banner {
+  overflow: hidden;
+  position: relative; /* Allow positioning of the overlay */
+  height: 90vh;
+}
+
+.over-banner {
+  position: absolute; 
+  top: 25%;
+  left: 0; 
+  margin-left: 6%;
+  margin-right: 6%;
+  color: white; 
+  padding: 10px; 
+  display: flex;
+  z-index: 10; 
+}
+
+.body-content{
+  position: absolute; 
+  top: 80%;
+  left: 0; 
+  width: 88%;
+  margin-left: 6%;
+  overflow: hidden;
+}
+
+.body-content div ::-webkit-scrollbar{
+  display: none;
+}
+
+.nav-right img{
+  width: 12%;
+  border-radius: 4px;
+}
+
+.over-banner h2{
+  /* font-family: 'title-font', sans-serif; */
+  color: #E50815;
+  font-size: 4vw;
+  text-transform: uppercase;
+  
+}
+
+.right-item{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+}
+
+.playBtn{
+  width: 120px;
+  background-color: white;
+  color: black;
+  border: 1px solid white;
+  height: 50px;
+  font-size: 1.1vw;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.infoBtn{
+  width: 150px;
+  margin-left: 5%;
+  background-color: rgba(117, 117, 117, 0.475);
+  color: white;
+  font-size: 1.1vw;
+  border: 1px solid rgba(117, 117, 117, 0.475);
+  height: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.right-item p{
+  background: linear-gradient(
+    to right,
+    rgba(117, 117, 117, 0.475),    /* Top: Black */
+    rgba(117, 117, 117, 0.292),    /* Middle: Transparent */
+    rgba(0, 0, 0, 0.031)   /* Bottom: Black */
+  );
+  padding: 10px;
+  border-left: 2px solid white;
+}
+
+.nav2{
+  position: absolute;
+  top: 0;
+  left: 0; 
+  z-index: 10;
+  
+}
+.nav-right {
+  display: flex; 
+  align-items: center;
+  justify-content: flex-end; 
+  text-align: center; 
+  right: 0;
+  gap: 10px;
+}
+.nav2{
+  height: 75px;
+  width: 100%;
+  margin-top: 10px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav2 img{
+  margin-left: 6%;
+}
+
+.nav2 div{
+  margin-right: 6%;
+}
+
+.video-grid{
+  cursor: pointer;
+  overflow: auto;
+}
+
+.video-grid img{
+  width: 100% !important;
+  height: 90vh !important;
+  object-fit: fill;
+}
+
+.video-grid video{
+  width: 100% !important;
+  height: 90vh !important;
+  object-fit: fill;
 }
 
